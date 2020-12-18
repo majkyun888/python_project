@@ -139,7 +139,9 @@ class ThreadPool:
     def __init__(self, size = 0):
         if not size:
             size = psutil.cpu_count() * 2
+        # 线程队列
         self.pool = ThreadSafeQueue(size)
+        # 任务队列
         self.task_queue = ThreadSafeQueue()
 
         for i in range(size):
